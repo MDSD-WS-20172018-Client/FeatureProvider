@@ -30,6 +30,8 @@ public class ErzeugerButtonAction implements ActionListener{
 	private void erzeugeStartViewFeatures(){
 		StartViewFeatures svf = new StartViewFeatures(this.md2Pfad);
 		svf.createCloseFunction();
+		GradleBuildFeatures gbf = new GradleBuildFeatures(this.md2Pfad);
+		gbf.setClassPath();
 	}
 	
 }

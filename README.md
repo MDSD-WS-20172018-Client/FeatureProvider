@@ -5,6 +5,7 @@ Aktuell ist das ein Wegwerfprototyp.
 ## Funktionen zur Zeit
 - Auswahl des Verzeichnisses (src-gen) von md2
 - Erzeugen der Funktion App-Schließen in der StartView
+- build.gradle anpassen (BuildPath korrigieren)
 
 ## Ziele der Erweiterung
 - Automatisch die Funktionen bereitstellen, die gebraucht werden um den Dateitransfer-Prototyp zum funktionieren zu bringen.
