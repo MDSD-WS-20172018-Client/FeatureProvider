@@ -2,6 +2,9 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+
+import javax.swing.JTextField;
 
 import features.*;
 
@@ -13,9 +16,13 @@ import features.*;
 public class ErzeugerButtonAction implements ActionListener{
 	
 	private String md2Pfad;
+	private String baseUrlText;
+	HashMap<String, Boolean> auswahlRest;
 	
-	public ErzeugerButtonAction(String md2Pfad){
+	public ErzeugerButtonAction(String md2Pfad, JTextField baseUrlText, HashMap<String, Boolean> auswahlRest){
 		this.md2Pfad = md2Pfad;
+		this.baseUrlText = baseUrlText.getText();
+		this.auswahlRest = auswahlRest;
 	}
 
 	@Override
