@@ -28,7 +28,8 @@ public class ErzeugerButtonAction implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		erzeugeStartViewFeatures();
-		
+		erzeugeKonfigurationen();
+		erzeugeNutzerOperationen();
 	}
 	
 	/**
@@ -37,9 +38,24 @@ public class ErzeugerButtonAction implements ActionListener{
 	private void erzeugeStartViewFeatures(){
 		StartViewFeatures svf = new StartViewFeatures(this.md2Pfad);
 		svf.createCloseFunction();
+	}
+	
+	/**
+	 * Methode zum Erzeugen der Konfigurationen der App
+	 */
+	private void erzeugeKonfigurationen(){
 		GradleBuildFeatures gbf = new GradleBuildFeatures(this.md2Pfad);
 		gbf.setClassPath();
 		gbf.setAppDependencies();
+	}
+	
+	/**
+	 * Methode zum Erzeugen der Nutzeroperationen: Nutzer anlegen, Nutzer anmelden, Nutzer abmelden
+	 */
+	private void erzeugeNutzerOperationen(){
+		NutzerFeatures nf = new NutzerFeatures(this.md2Pfad);
+		nf.erstelleNutzerklasse();
+		nf.erstelleNutzerTask();
 	}
 	
 }
