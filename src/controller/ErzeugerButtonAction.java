@@ -30,6 +30,7 @@ public class ErzeugerButtonAction implements ActionListener{
 		erzeugeStartViewFeatures();
 		erzeugeKonfigurationen();
 		erzeugeNutzerOperationen();
+		erzeugeAndroidManifestFeatures();
 	}
 	
 	/**
@@ -56,6 +57,15 @@ public class ErzeugerButtonAction implements ActionListener{
 		NutzerFeatures nf = new NutzerFeatures(this.md2Pfad);
 		nf.erstelleNutzerklasse();
 		nf.erstelleNutzerTask();
+		nf.erstelleRegistrirungsfunktion();
+	}
+	
+	/**
+	 * Methode zum Erzeugen der Einträge in der Android Manifest xml-Datei
+	 */
+	private void erzeugeAndroidManifestFeatures(){
+		AndroidManifestFeatures amf = new AndroidManifestFeatures(md2Pfad);
+		amf.erzeugePermissions();
 	}
 	
 }
