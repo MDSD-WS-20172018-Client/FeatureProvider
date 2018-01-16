@@ -25,7 +25,6 @@ public class CheckboxAction implements ItemListener {
 		Checkbox box = (Checkbox) e.getSource();
 		//Status in der Liste anpassen
 		if (box.getState()){
-			System.out.println("true");
 			checkboxEntries.put(box.getLabel(), true);
 		} else {
 			checkboxEntries.put(box.getLabel(), false);
