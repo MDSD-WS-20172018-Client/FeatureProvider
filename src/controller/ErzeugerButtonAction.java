@@ -39,6 +39,7 @@ public class ErzeugerButtonAction implements ActionListener{
 		svf.createCloseFunction();
 		GradleBuildFeatures gbf = new GradleBuildFeatures(this.md2Pfad);
 		gbf.setClassPath();
+		gbf.setAppDependencies();
 	}
 	
 }
