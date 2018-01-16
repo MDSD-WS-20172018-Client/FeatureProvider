@@ -2,6 +2,7 @@ package md2.testprojekt.md2.controller;
 
 import md2.testprojekt.LoginActivity;
 import md2.testprojekt.DateiDownloadActivity;
+import md2.testprojekt.md2.model.User;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
