@@ -113,14 +113,21 @@ public class AsyncTaskUser  extends  AsyncTask<String,String,String> {
                        } else{
                            Intent intent = new Intent(activity, DateiDownloadActivity.class);
                            JSONObject home= (JSONObject) jsonObj.get("home");
-                           JSONArray  Filelist= (JSONArray) home.get("files");
+                           JSONArray  filelist= (JSONArray) home.get("files");
+                           JSONArray  folderlist= (JSONArray) home.get("subFolders");
+                           HashMap<String, String> folders = new HashMap<String, String>();
                            HashMap<String, String> files = new HashMap<String, String>();
-                           for(int i=0;i<Filelist.length();i++)
+                           for(int i=0;i<filelist.length();i++)
                            {
-                               JSONObject file= (JSONObject) Filelist.get(i);
+                               JSONObject file= (JSONObject) filelist.get(i);
                                files.put(file.getString("id"), file.getString("name"));
                            }
-                           intent.putExtra("homeFolder", new HomeFolder(home.getString("id"), jsonObj.getString("token"), files));
+                           for(int i=0;i<folderlist.length();i++)
+                           {
+                               JSONObject folder= (JSONObject) folderlist.get(i);
+                               folders.put(folder.getString("id"), folder.getString("name"));
+                           }
+                           intent.putExtra("homeFolder", new HomeFolder(home.getString("id"), jsonObj.getString("token"), files, folders));
                            activity.startActivityForResult(intent, 0);
                        }
 

@@ -7,11 +7,13 @@ public class HomeFolder implements Serializable{
 	private String folderID;
 	private String token;
 	private Map<String, String> files;
+	private Map<String, String> folders;
 	
-	public HomeFolder(String folderID, String token, Map<String, String> files){
+	public HomeFolder(String folderID, String token, Map<String, String> files, Map<String, String> folders){
 		this.folderID = folderID;
 		this.token = token;
 		this.files = files;
+		this.folders = folders;
 	}
 
 	public String getFolderID() {
@@ -36,5 +38,13 @@ public class HomeFolder implements Serializable{
 
 	public void setFiles(Map<String, String> files) {
 		this.files = files;
+	}
+	
+	public Map<String, String> getFolders() {
+		return folders;
+	}
+
+	public void setFolders(Map<String, String> folders) {
+		this.folders = folders;
 	}
 }
