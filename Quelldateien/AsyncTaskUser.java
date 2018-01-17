@@ -120,12 +120,12 @@ public class AsyncTaskUser  extends  AsyncTask<String,String,String> {
                            for(int i=0;i<filelist.length();i++)
                            {
                                JSONObject file= (JSONObject) filelist.get(i);
-                               files.put(file.getString("id"), file.getString("name"));
+                               files.put(file.getString("name"), file.getString("id"));
                            }
                            for(int i=0;i<folderlist.length();i++)
                            {
                                JSONObject folder= (JSONObject) folderlist.get(i);
-                               folders.put(folder.getString("id"), folder.getString("name"));
+                               folders.put(folder.getString("name"), folder.getString("id"));
                            }
                            intent.putExtra("homeFolder", new HomeFolder(home.getString("id"), jsonObj.getString("token"), files, folders));
                            activity.startActivityForResult(intent, 0);

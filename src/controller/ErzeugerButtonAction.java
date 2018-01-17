@@ -31,6 +31,7 @@ public class ErzeugerButtonAction implements ActionListener{
 		erzeugeKonfigurationen();
 		erzeugeNutzerOperationen();
 		erzeugeAndroidManifestFeatures();
+		erzeugeDownloadFeatures();
 	}
 	
 	/**
@@ -60,6 +61,15 @@ public class ErzeugerButtonAction implements ActionListener{
 		nf.erstelleRegistrirungsfunktion();
 		nf.erstelleEinloggenfunktion();
 		nf.erstelleHomeFolderklasse();
+	}
+	
+	/**
+	 * Methode zum Erzeugen der Downloadfeatures
+	 */
+	private void erzeugeDownloadFeatures(){
+		DownloadFeatures df = new DownloadFeatures(md2Pfad);
+		df.erweitereDownloadView();
+		df.erzeugeListenBefuellen();
 	}
 	
 	/**
