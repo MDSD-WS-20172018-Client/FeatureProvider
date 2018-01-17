@@ -58,6 +58,8 @@ public class ErzeugerButtonAction implements ActionListener{
 		nf.erstelleNutzerklasse();
 		nf.erstelleNutzerTask();
 		nf.erstelleRegistrirungsfunktion();
+		nf.erstelleEinloggenfunktion();
+		nf.erstelleHomeFolderklasse();
 	}
 	
 	/**

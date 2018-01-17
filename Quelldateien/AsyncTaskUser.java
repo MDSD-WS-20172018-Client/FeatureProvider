@@ -3,6 +3,7 @@ package md2.testprojekt.md2.controller;
 import md2.testprojekt.LoginActivity;
 import md2.testprojekt.DateiDownloadActivity;
 import md2.testprojekt.md2.model.User;
+import md2.testprojekt.md2.model.HomeFolder;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -18,8 +19,10 @@ import org.apache.http.entity.StringEntity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONArray;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -109,10 +112,15 @@ public class AsyncTaskUser  extends  AsyncTask<String,String,String> {
                           activity.startActivity(intent);
                        } else{
                            Intent intent = new Intent(activity, DateiDownloadActivity.class);
-                           List<String> fileName = new ArrayList<String>();
                            JSONObject home= (JSONObject) jsonObj.get("home");
-                           intent.putExtra("FolderId",home.getString("id"));
-                           intent.putExtra("Token",jsonObj.getString("token"));
+                           JSONArray  Filelist= (JSONArray) home.get("files");
+                           HashMap<String, String> files = new HashMap<String, String>();
+                           for(int i=0;i<Filelist.length();i++)
+                           {
+                               JSONObject file= (JSONObject) Filelist.get(i);
+                               files.put(file.getString("id"), file.getString("name"));
+                           }
+                           intent.putExtra("homeFolder", new HomeFolder(home.getString("id"), jsonObj.getString("token"), files));
                            activity.startActivityForResult(intent, 0);
                        }
 
