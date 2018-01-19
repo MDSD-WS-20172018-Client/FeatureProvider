@@ -7,11 +7,15 @@ import java.io.IOException;
 
 public class DownloadFeatures {
 	private String md2Pfad;
+	private String dateiListView;
+	private String ordnerListView;
 	private static final String lView1 = "listFile";
 	private static final String lView2 = "listFolder";
 
-	public DownloadFeatures(String md2Pfad) {
+	public DownloadFeatures(String md2Pfad, String dateiListView, String ordnerListView) {
 		this.md2Pfad = md2Pfad;
+		this.dateiListView = dateiListView;
+		this.ordnerListView = ordnerListView;
 	}
 
 	/**
@@ -28,12 +32,12 @@ public class DownloadFeatures {
 			StringBuilder builder = new StringBuilder(zeile);
 			builder.insert(
 					builder.indexOf(
-							"<de.uni_muenster.wi.md2library.view.widgets.implementation.Md2Label android:id=\"@id/DateiDownload_ordnerLabel\""),
+							"<", builder.indexOf(dateiListView)),
 					"<ListView android:id=\"@+id/" + lView1
 							+ "\" android:layout_width=\"wrap_content\" android:layout_height=\"wrap_content\" android:textSize=\"30dp\" android:state_selected=\"true\" android:textStyle=\"normal|italic\" />");
 			builder.insert(
 					builder.indexOf(
-							"<de.uni_muenster.wi.md2library.view.widgets.implementation.Md2Button android:enabled=\"true\" android:id=\"@id/DateiDownload_switchView\""),
+							"<", builder.indexOf(ordnerListView)),
 					"<ListView android:id=\"@+id/" + lView2
 							+ "\" android:layout_width=\"wrap_content\" android:layout_height=\"wrap_content\" android:textSize=\"30dp\" android:state_selected=\"true\" android:textStyle=\"normal|italic\" />");
 

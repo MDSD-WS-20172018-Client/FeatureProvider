@@ -3,14 +3,17 @@ package gui;
 import java.awt.Checkbox;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import controller.CheckboxAction;
+import controller.DownloadLabelSucher;
 import controller.ErzeugerButtonAction;
 import controller.FensterSchliesser;
 
@@ -41,14 +44,24 @@ public class FeatureProviderHauptfenster extends JFrame {
 		GridLayout layout = new GridLayout(0, 1);
 		getContentPane().setLayout(layout);
 		
+		//Elemente zur Auswahl der Position erzeugen
+		DownloadLabelSucher dls = new DownloadLabelSucher(pfad);
+		ArrayList<String> labels = (ArrayList<String>) dls.findLables();
+		
 		//Elemente erzeugen
 		JButton erzeugerbutton = new JButton("Erzeuge Features");
-		JTextField urlText = new JTextField("34.238.158.85:8080/api");
+		JTextField urlText = new JTextField("34.238.158.85:8080/api");  //Vorbereitung, wenn man das Tool universeller machen wollte
+		JComboBox auswahlposition1 = new JComboBox(labels.toArray());
+		JComboBox auswahlposition2 = new JComboBox(labels.toArray());
 		//Die Elemente gruppieren, die bei dem REST-Service verwendet werden können
 		Checkbox userLogin = new Checkbox(LOGINSTRING);
 		Checkbox userRegister = new Checkbox(REGISTERSTRING);
 		Checkbox dateiHochladen = new Checkbox(DATEIANLEGENSTRING);
 		Checkbox ordnerErstellen = new Checkbox(ORDNERANLEGENSTRING);
+		
+		// Solange die Funktionen noch nicht implementiert worden sind
+		dateiHochladen.setEnabled(false);
+		ordnerErstellen.setEnabled(false);
 		
 		//Initialisierung der Hashmap mit den Werten zur Verwaltung der REST-Features
 		restAuswahl.put(LOGINSTRING, false);
@@ -66,6 +79,10 @@ public class FeatureProviderHauptfenster extends JFrame {
 		getContentPane().add(new JLabel("Die Funktion die App zu schliessen wird immer erzeugt."));
 		getContentPane().add(new JLabel("Rest-Service"));
 		getContentPane().add(userLogin);
+		getContentPane().add(new JLabel("Position ListView Dateien"));
+		getContentPane().add(auswahlposition1);
+		getContentPane().add(new JLabel("Position ListView Ordner"));
+		getContentPane().add(auswahlposition2);
 		getContentPane().add(userRegister);
 		getContentPane().add(dateiHochladen);
 		getContentPane().add(ordnerErstellen);
@@ -73,7 +90,7 @@ public class FeatureProviderHauptfenster extends JFrame {
 		getContentPane().add(erzeugerbutton);
 		
 		//Aktion auf den Button legen
-		erzeugerbutton.addActionListener(new ErzeugerButtonAction(pfad, urlText, restAuswahl));
+		erzeugerbutton.addActionListener(new ErzeugerButtonAction(pfad, urlText, restAuswahl, auswahlposition1, auswahlposition2));
 	}
 
 }
