@@ -96,7 +96,7 @@ public class NutzerFeatures {
 					newText += "\t\t\t\tUser user = new User();\n";
 					newText += "\t\t\t\tuser.setName(Md2ViewManager.getInstance().getWidgetValue(R.id.Register___ContainerUserName_UserName).toString());\n";
 					newText += "\t\t\t\tuser.setPassword(Md2ViewManager.getInstance().getWidgetValue(R.id.Register___ContainerPasswort_Passwort).toString());\n";
-					newText += "\t\t\t\tnew AsyncTaskUser(Md2ViewManager.getInstance().getActiveView(),user).execute(\"http://34.238.158.85:8080/api/users\");\n";
+					newText += "\t\t\t\tnew AsyncTaskUser(Md2ViewManager.getInstance().getActiveView(),user).execute(\"http://34.239.181.2:8080/api/users\");\n";
 				}
 				zeile = bufIn.readLine();
 			}
@@ -145,7 +145,7 @@ public class NutzerFeatures {
 					newText += "\t\t\t\tUser user = new User();\n";
 					newText += "\t\t\t\tuser.setName(Md2ViewManager.getInstance().getWidgetValue(R.id.Login___ContainerUserName_UserName).toString());\n";
 					newText += "\t\t\t\tuser.setPassword(Md2ViewManager.getInstance().getWidgetValue(R.id.Login___ContainerPasswort_Passwort).toString());\n";
-					newText += "\t\t\t\tnew AsyncTaskUser(Md2ViewManager.getInstance().getActiveView(),user).execute(\"http://34.238.158.85:8080/api/users/login\");\n";
+					newText += "\t\t\t\tnew AsyncTaskUser(Md2ViewManager.getInstance().getActiveView(),user).execute(\"http://34.239.181.2:8080/api/users/login\");\n";
 					auslassen = 6;
 				}
 				zeile = bufIn.readLine();
